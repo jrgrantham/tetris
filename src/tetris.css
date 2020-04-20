@@ -27,5 +27,5 @@ h2 {
   display: flex;
   justify-content: space-between;
   width: 300px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
