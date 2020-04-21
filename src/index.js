@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const canvas = document.getElementById("tetris");
 const context = canvas.getContext("2d");
 
