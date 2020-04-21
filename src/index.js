@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 
 const canvas = document.getElementById("tetris");
 const context = canvas.getContext("2d");
@@ -181,6 +181,7 @@ function playerReset() {
     ((arena[0].length / 2) | 0) - ((player.matrix[0].length / 2) | 0);
   if (collide(arena, player)) {
     arena.forEach((row) => row.fill(0));
+    player.bricks = 1;
     player.score = 0;
     updateScore();
   }
