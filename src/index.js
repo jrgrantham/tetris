@@ -26,6 +26,7 @@ function createMatrix(w, h) {
 }
 
 function createPiece(type) {
+  player.bricks += 1;
   if (type === "T") {
     return [
       [0, 1, 0],
@@ -124,10 +125,12 @@ function arenaSweep() {
     y++;
 
     player.score += rowCount * 10;
+    player.score += player.bricks;
+    player.bricks = 1;
     rowCount *= 2;
 
     if (player.score > player.highScore) {
-      player.highScore = player.score
+      player.highScore = player.score;
     }
   }
 }
@@ -140,12 +143,16 @@ function playerDrop() {
     playerReset();
     arenaSweep();
     updateScore();
+    player.slam = false;
   }
   dropCounter = 0;
 }
+
 function updateScore() {
-  document.getElementById('score').innerText = `Score: ${player.score}`
-  document.getElementById('highScore').innerText = `High Score: ${player.highScore}`
+  document.getElementById("score").innerText = `Score: ${player.score}`;
+  document.getElementById(
+    "highScore"
+  ).innerText = `High Score: ${player.highScore}`;
 }
 
 function playerMove(direction) {
@@ -154,6 +161,15 @@ function playerMove(direction) {
     player.position.x -= direction;
   }
 }
+
+// function slam() {
+//   player.position.y++;
+//   if (collide(arena, player)) {
+//     player.position.y--;
+//     player.position.y--;
+//     playerDrop()
+//   }
+// }
 
 function playerReset() {
   const pieces = "ILJOTSZ";
@@ -204,8 +220,13 @@ function update(time = 0) {
   lastTime = time;
   dropCounter += deltaTime;
 
+  if (player.slam) {
+    playerDrop();
+  }
+
   if (dropCounter > dropInterval) {
     playerDrop();
+    console.log(player.bricks);
   }
 
   draw();
@@ -218,8 +239,10 @@ console.table(arena);
 const player = {
   position: { x: 0, y: 0 },
   matrix: null,
+  bricks: 0,
   score: 0,
   highScore: 0,
+  slam: false,
 };
 
 document.addEventListener("keydown", (event) => {
@@ -228,6 +251,7 @@ document.addEventListener("keydown", (event) => {
   } else if (event.keyCode === 39) {
     playerMove(1);
   } else if (event.keyCode === 40) {
+    player.slam = true;
     playerDrop();
   } else if (event.keyCode === 81) {
     playerRotate(-1);

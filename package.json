@@ -2,6 +2,7 @@
   "name": "tetris",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "tetris.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/jrgrantham/tetris/issues"
   },
-  "homepage": "https://github.com/jrgrantham/tetris#readme"
+  "homepage": "https://github.com/jrgrantham/tetris#readme",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }
