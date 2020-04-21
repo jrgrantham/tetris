@@ -9,10 +9,11 @@ body {
 }
 canvas {
   border: 2px solid white;
-  width: 300px;
+  max-width: 300px;
+  width: 80%;
 }
 
-h1, h2 {
+h1, h2, h3 {
   color: white;
   font-weight: 400;
 }
@@ -21,6 +22,13 @@ h2 {
   display: inline-block;
   text-align: justify;
   font-size: 20px;
+}
+
+h3 {
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  min-width: 60px;
 }
 
 p {
@@ -32,4 +40,10 @@ p {
   justify-content: space-between;
   width: 300px;
   /* border: 1px solid red; */
+}
+
+.movement {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
 }

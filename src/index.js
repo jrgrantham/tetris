@@ -1,6 +1,10 @@
-
 const canvas = document.getElementById("tetris");
 const context = canvas.getContext("2d");
+
+const leftButton = document.getElementById("left");
+const rotateButton = document.getElementById("rotate");
+const rightButton = document.getElementById("right");
+const slamButton = document.getElementById("slam");
 
 context.scale(20, 20);
 
@@ -225,8 +229,9 @@ function update(time = 0) {
   }
 
   if (dropCounter > dropInterval) {
+    // console.log(leftButton)
     playerDrop();
-    console.log(player.bricks);
+    // console.log(player.bricks);
   }
 
   draw();
@@ -243,6 +248,21 @@ const player = {
   score: 0,
   highScore: 0,
   slam: false,
+};
+
+// document.getElementById("left").addEventListener("click", console.log("left"));
+leftButton.onclick = function () {
+  playerMove(-1);
+};
+rightButton.onclick = function () {
+  playerMove(1);
+};
+rotateButton.onclick = function () {
+  playerRotate(-1);
+};
+slamButton.onclick = function () {
+  player.slam = true;
+  playerDrop();
 };
 
 document.addEventListener("keydown", (event) => {
