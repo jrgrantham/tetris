@@ -1,11 +1,9 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 
 const canvas = document.getElementById("tetris");
 const context = canvas.getContext("2d");
 
 context.scale(20, 20);
-
-const matrix = [];
 
 function collide(arena, player) {
   const [m, o] = [player.matrix, player.position];
