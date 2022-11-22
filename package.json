@@ -18,7 +18,7 @@
   "homepage": "https://github.com/jrgrantham/tetris#readme",
   "devDependencies": {
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "lodash": "^4.17.15"
